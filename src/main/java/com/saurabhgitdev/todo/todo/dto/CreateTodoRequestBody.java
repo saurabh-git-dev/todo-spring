@@ -8,6 +8,7 @@ public class CreateTodoRequestBody {
     private String title;
 
     @Null
+    @NotBlank
     private String description;
 
 
@@ -28,7 +29,7 @@ public class CreateTodoRequestBody {
     }
 
     public CreateTodoRequestBody(String title, String description) {
-        this.title = this.title;
+        this.title = title;
         this.description = description;
     }
 

@@ -9,10 +9,12 @@ public class CreateTodoResponse {
     @NotNull
     private Long id;
 
+    @NotNull
     @NotBlank
     private String title;
 
     @Null
+    @NotBlank
     private String description;
 
     public Long getId() {
