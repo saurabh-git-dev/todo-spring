@@ -1,13 +1,8 @@
 package com.saurabhgitdev.todo.user.domain;
-
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.saurabhgitdev.todo.todo.domain.Todo;
 import jakarta.persistence.*;
 
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 @Entity
