@@ -24,11 +24,6 @@ public class TodoController {
         return ResponseEntity.ok(res);
     }
 
-    @GetMapping("{id}")
-    public String get(@PathVariable String id) {
-        return "Returned data for " + id;
-    }
-
     @GetMapping
     public ResponseEntity<FindAllTodoResponse> findAll(@ModelAttribute FindAllTodoRequestParams params) {
         FindAllTodoResponse res = todoService.findAll(params);
