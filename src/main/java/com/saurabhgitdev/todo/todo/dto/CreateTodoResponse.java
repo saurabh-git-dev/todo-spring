@@ -1,7 +1,5 @@
 package com.saurabhgitdev.todo.todo.dto;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
-import com.saurabhgitdev.todo.user.domain.User;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;

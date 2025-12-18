@@ -6,7 +6,6 @@ import jakarta.persistence.*;
 
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
-import java.util.UUID;
 
 @Entity
 @Table(name = "todos")

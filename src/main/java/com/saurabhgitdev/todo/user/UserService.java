@@ -1,7 +1,5 @@
 package com.saurabhgitdev.todo.user;
 
-import com.saurabhgitdev.todo.todo.dto.CreateTodoResponse;
-import com.saurabhgitdev.todo.todo.dto.findAll.FindAllTodoResponseTodo;
 import com.saurabhgitdev.todo.user.domain.User;
 import com.saurabhgitdev.todo.user.dto.CreateUserRequestBody;
 import com.saurabhgitdev.todo.user.dto.CreateUserResponse;
