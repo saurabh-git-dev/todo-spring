@@ -1,27 +1,34 @@
 package com.saurabhgitdev.todo.user;
 
+import com.saurabhgitdev.todo.todo.TodoService;
+import com.saurabhgitdev.todo.user.domain.User;
+import com.saurabhgitdev.todo.user.dto.CreateUserRequestBody;
+import com.saurabhgitdev.todo.user.dto.CreateUserResponse;
+import com.saurabhgitdev.todo.user.dto.FindAllUserResponse;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/api/users")
 public class UserController {
 
-    @PostMapping("signup")
-    public String signup(@RequestBody String entity) {
-        //TODO: process POST request
+    private final UserService userService;
 
-        return entity;
+    public UserController(UserService userService) {
+        this.userService = userService;
     }
 
-    @PostMapping("login")
-    public String login(@RequestBody String entity) {
-        //TODO: process POST request
-
-        return entity;
+    @PostMapping
+    public ResponseEntity<CreateUserResponse> signup(@RequestBody CreateUserRequestBody requestBody) {
+        CreateUserResponse res = userService.createUser(requestBody);
+        return  ResponseEntity.ok(res);
     }
 
-    @GetMapping("current-user")
-    public String currentUser() {
-        return "Spring Boot REST API is running 🚀";
+    @GetMapping
+    public ResponseEntity<FindAllUserResponse> findAll() {
+        FindAllUserResponse res = userService.findAll();
+        return ResponseEntity.ok(res);
     }
 }

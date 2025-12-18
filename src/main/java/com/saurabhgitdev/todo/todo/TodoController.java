@@ -2,7 +2,10 @@ package com.saurabhgitdev.todo.todo;
 
 import com.saurabhgitdev.todo.todo.dto.CreateTodoRequestBody;
 import com.saurabhgitdev.todo.todo.dto.CreateTodoResponse;
+import com.saurabhgitdev.todo.todo.dto.findAll.FindAllTodoRequestParams;
+import com.saurabhgitdev.todo.todo.dto.findAll.FindAllTodoResponse;
 import org.apache.coyote.BadRequestException;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -16,8 +19,9 @@ public class TodoController {
     }
 
     @PostMapping
-    public CreateTodoResponse create(@RequestBody CreateTodoRequestBody reqBody) throws BadRequestException {
-        return todoService.createTodo(reqBody);
+    public ResponseEntity<CreateTodoResponse> create(@RequestBody CreateTodoRequestBody reqBody) throws BadRequestException {
+        CreateTodoResponse res = todoService.createTodo(reqBody);
+        return ResponseEntity.ok(res);
     }
 
     @GetMapping("{id}")
@@ -26,7 +30,8 @@ public class TodoController {
     }
 
     @GetMapping
-    public String getAll() {
-        return "Spring Boot REST API is running 🚀";
+    public ResponseEntity<FindAllTodoResponse> findAll(@ModelAttribute FindAllTodoRequestParams params) throws BadRequestException {
+        FindAllTodoResponse res = todoService.findAll(params);
+        return  ResponseEntity.ok(res);
     }
 }

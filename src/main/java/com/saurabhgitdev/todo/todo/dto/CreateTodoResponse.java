@@ -1,52 +1,48 @@
 package com.saurabhgitdev.todo.todo.dto;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.saurabhgitdev.todo.user.domain.User;
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Null;
 
-public class CreateTodoResponse {
+import java.time.OffsetDateTime;
 
-    @NotNull
-    private Long id;
+public record CreateTodoResponse(@NotNull Long id, @NotBlank String title,
+                                 @Schema(nullable = true, requiredMode = Schema.RequiredMode.REQUIRED) @Null String description,
+                                 @NotBlank OffsetDateTime createdTime, @NotBlank OffsetDateTime updatedTime) {
 
-    @NotNull
-    @NotBlank
-    private String title;
-
-    @Null
-    @NotBlank
-    private String description;
-
-    public Long getId() {
-        return id;
+    @Override
+    public OffsetDateTime createdTime() {
+        return createdTime;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    @Override
+    public OffsetDateTime updatedTime() {
+        return updatedTime;
     }
 
-    public String getTitle() {
+    @Override
+    public String title() {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    @Override
+    public Long id() {
+        return id;
     }
 
-    public String getDescription() {
+    @Override
+    public String description() {
         return description;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public CreateTodoResponse(Long id, String title, String description) {
+    public CreateTodoResponse(Long id, String title, String description, OffsetDateTime createdTime, OffsetDateTime updatedTime) {
         this.id = id;
         this.title = title;
         this.description = description;
-    }
-
-    public CreateTodoResponse() {
+        this.createdTime = createdTime;
+        this.updatedTime = updatedTime;
     }
 }

@@ -1,9 +1,12 @@
-package com.saurabhgitdev.todo.todo.entity;
+package com.saurabhgitdev.todo.todo.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.saurabhgitdev.todo.user.domain.User;
 import jakarta.persistence.*;
 
 import java.time.OffsetDateTime;
 import java.time.ZoneOffset;
+import java.util.UUID;
 
 @Entity
 @Table(name = "todos")
@@ -19,20 +22,29 @@ public class Todo {
     private String description;
 
     @Column(nullable = false, updatable = false)
-    private OffsetDateTime createdAt;
+    private OffsetDateTime createdTime;
 
     @Column(nullable = false)
-    private OffsetDateTime updatedAt;
+    private OffsetDateTime updatedTime;
+
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(
+            name = "user_id",
+            nullable = false,
+            foreignKey = @ForeignKey(name = "fk_todo_user")
+    )
+    @JsonBackReference
+    private User user;
 
     @PrePersist
     protected void onCreate() {
-        createdAt = OffsetDateTime.now(ZoneOffset.UTC);
-        updatedAt = OffsetDateTime.now(ZoneOffset.UTC);
+        createdTime = OffsetDateTime.now(ZoneOffset.UTC);
+        updatedTime = OffsetDateTime.now(ZoneOffset.UTC);
     }
 
     @PreUpdate
     protected void onUpdate() {
-        updatedAt = OffsetDateTime.now(ZoneOffset.UTC);
+        updatedTime = OffsetDateTime.now(ZoneOffset.UTC);
     }
 
     public Long getId() {
@@ -55,16 +67,24 @@ public class Todo {
         this.title = title;
     }
 
-    public OffsetDateTime getCreatedAt() {
-        return createdAt;
+    public OffsetDateTime getCreatedTime() {
+        return createdTime;
     }
 
-    public OffsetDateTime getUpdatedAt() {
-        return updatedAt;
+    public OffsetDateTime getUpdatedTime() {
+        return updatedTime;
     }
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public User getUser() {
+       return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public Todo() {

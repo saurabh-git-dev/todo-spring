@@ -1,38 +1,32 @@
 package com.saurabhgitdev.todo.todo.dto;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.Null;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
-public class CreateTodoRequestBody {
-    @NotBlank
-    private String title;
+import java.util.UUID;
 
-    @Null
-    @NotBlank
-    private String description;
+public record CreateTodoRequestBody(@NotBlank UUID userId, @NotBlank String title,
+                                    @Schema(nullable = false, requiredMode = Schema.RequiredMode.NOT_REQUIRED) @NotNull(message = "description must not be null") @Size(min = 1, message = "description must not be empty") String description) {
+    @Override
+    public UUID userId() {
+        return userId;
+    }
 
-
-    public String getDescription() {
+    @Override
+    public String description() {
         return description;
     }
 
-    public String getTitle() {
+    @Override
+    public String title() {
         return title;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public CreateTodoRequestBody(String title, String description) {
+    public CreateTodoRequestBody(UUID userId, String title, String description) {
+        this.userId = userId;
         this.title = title;
         this.description = description;
-    }
-
-    public CreateTodoRequestBody() {
     }
 }
