@@ -32,6 +32,6 @@ public class TodoController {
     @GetMapping
     public ResponseEntity<FindAllTodoResponse> findAll(@ModelAttribute FindAllTodoRequestParams params) {
         FindAllTodoResponse res = todoService.findAll(params);
-        return  ResponseEntity.ok(res);
+        return ResponseEntity.ok(res);
     }
 }

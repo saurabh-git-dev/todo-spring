@@ -19,7 +19,7 @@ public class UserController {
     @PostMapping
     public ResponseEntity<CreateUserResponse> signup(@RequestBody CreateUserRequestBody requestBody) {
         CreateUserResponse res = userService.createUser(requestBody);
-        return  ResponseEntity.ok(res);
+        return ResponseEntity.ok(res);
     }
 
     @GetMapping

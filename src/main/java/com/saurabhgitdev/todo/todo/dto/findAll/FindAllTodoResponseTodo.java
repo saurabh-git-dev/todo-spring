@@ -12,7 +12,8 @@ import java.time.OffsetDateTime;
 
 public record FindAllTodoResponseTodo(@NotNull Long id, @NotBlank String title,
                                       @Schema(nullable = true, requiredMode = Schema.RequiredMode.REQUIRED) @Null String description,
-                                      @NotBlank OffsetDateTime createdTime, @NotBlank OffsetDateTime updatedTime, @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED)
+                                      @NotBlank OffsetDateTime createdTime, @NotBlank OffsetDateTime updatedTime,
+                                      @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED)
                                       @JsonInclude(JsonInclude.Include.NON_NULL) @Null FindAllTodoResponseTodoUser user) {
     public FindAllTodoResponseTodo(Long id, String title, String description, OffsetDateTime createdTime, OffsetDateTime updatedTime, FindAllTodoResponseTodoUser user) {
         this.id = id;

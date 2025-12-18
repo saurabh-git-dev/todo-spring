@@ -1,4 +1,5 @@
 package com.saurabhgitdev.todo.user.domain;
+
 import jakarta.persistence.*;
 
 import java.time.OffsetDateTime;
@@ -20,6 +21,9 @@ public class User {
 
     @Column(nullable = false)
     private OffsetDateTime updatedAt;
+
+    public User() {
+    }
 
     @PrePersist
     protected void onCreate() {
@@ -50,9 +54,6 @@ public class User {
 
     public OffsetDateTime getUpdatedAt() {
         return updatedAt;
-    }
-
-    public User() {
     }
 
     @Override

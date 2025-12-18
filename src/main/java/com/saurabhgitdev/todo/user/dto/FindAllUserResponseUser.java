@@ -7,7 +7,8 @@ import jakarta.validation.constraints.NotNull;
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
-public record FindAllUserResponseUser(@NotNull UUID id, @NotNull String name, @NotBlank OffsetDateTime createdTime, @NotBlank OffsetDateTime updatedTime) {
+public record FindAllUserResponseUser(@NotNull UUID id, @NotNull String name, @NotBlank OffsetDateTime createdTime,
+                                      @NotBlank OffsetDateTime updatedTime) {
     public FindAllUserResponseUser(UUID id, String name, OffsetDateTime createdTime, OffsetDateTime updatedTime) {
         this.id = id;
         this.name = name;

@@ -1,8 +1,8 @@
 package com.saurabhgitdev.todo.todo;
 
+import com.saurabhgitdev.todo.todo.domain.Todo;
 import com.saurabhgitdev.todo.todo.dto.CreateTodoRequestBody;
 import com.saurabhgitdev.todo.todo.dto.CreateTodoResponse;
-import com.saurabhgitdev.todo.todo.domain.Todo;
 import com.saurabhgitdev.todo.todo.dto.findAll.FindAllTodoRequestParams;
 import com.saurabhgitdev.todo.todo.dto.findAll.FindAllTodoResponse;
 import com.saurabhgitdev.todo.todo.dto.findAll.FindAllTodoResponseTodo;

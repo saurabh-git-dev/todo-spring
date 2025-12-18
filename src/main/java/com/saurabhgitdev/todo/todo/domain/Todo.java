@@ -35,6 +35,9 @@ public class Todo {
     @JsonBackReference
     private User user;
 
+    public Todo() {
+    }
+
     @PrePersist
     protected void onCreate() {
         createdTime = OffsetDateTime.now(ZoneOffset.UTC);
@@ -54,12 +57,16 @@ public class Todo {
         return title;
     }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     public String getDescription() {
         return description;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public OffsetDateTime getCreatedTime() {
@@ -70,19 +77,12 @@ public class Todo {
         return updatedTime;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
     public User getUser() {
-       return user;
+        return user;
     }
 
     public void setUser(User user) {
         this.user = user;
-    }
-
-    public Todo() {
     }
 
     @Override
