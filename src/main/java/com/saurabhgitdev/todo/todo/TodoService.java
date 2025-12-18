@@ -57,7 +57,7 @@ public class TodoService {
         );
     }
 
-    public FindAllTodoResponse findAll(FindAllTodoRequestParams params) throws BadRequestException {
+    public FindAllTodoResponse findAll(FindAllTodoRequestParams params) {
         List<Todo> todos;
         if (params.userId() == null) {
             todos = todoRepository.findAll();

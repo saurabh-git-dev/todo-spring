@@ -8,7 +8,7 @@ import jakarta.validation.constraints.Size;
 import java.util.UUID;
 
 public record CreateTodoRequestBody(@NotBlank UUID userId, @NotBlank String title,
-                                    @Schema(nullable = false, requiredMode = Schema.RequiredMode.NOT_REQUIRED) @NotNull(message = "description must not be null") @Size(min = 1, message = "description must not be empty") String description) {
+                                    @Schema(requiredMode = Schema.RequiredMode.NOT_REQUIRED) @NotNull(message = "description must not be null") @Size(min = 1, message = "description must not be empty") String description) {
     public CreateTodoRequestBody(UUID userId, String title, String description) {
         this.userId = userId;
         this.title = title;

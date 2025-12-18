@@ -33,7 +33,7 @@ public class User {
             orphanRemoval = true
     )
     @JsonManagedReference
-    private List<Todo> todos = new ArrayList<>();
+    private final List<Todo> todos = new ArrayList<>();
 
     @PrePersist
     protected void onCreate() {
@@ -50,10 +50,6 @@ public class User {
         return id;
     }
 
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
     }
@@ -68,15 +64,6 @@ public class User {
 
     public OffsetDateTime getUpdatedAt() {
         return updatedAt;
-    }
-
-    public User(UUID id, String name) {
-        this.id = id;
-        this.name = name;
-    }
-
-    public List<Todo> getTodos() {
-        return todos;
     }
 
     public User() {

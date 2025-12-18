@@ -17,7 +17,7 @@ public class Todo {
     @Column(nullable = false)
     private String title;
 
-    @Column(nullable = true)
+    @Column
     private String description;
 
     @Column(nullable = false, updatable = false)
@@ -58,10 +58,6 @@ public class Todo {
         return description;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public void setTitle(String title) {
         this.title = title;
     }
@@ -87,12 +83,6 @@ public class Todo {
     }
 
     public Todo() {
-    }
-
-    public Todo(Long id, String title, String description) {
-        this.id = id;
-        this.title = title;
-        this.description = description;
     }
 
     @Override
