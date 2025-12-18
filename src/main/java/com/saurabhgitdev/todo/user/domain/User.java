@@ -26,15 +26,6 @@ public class User {
     @Column(nullable = false)
     private OffsetDateTime updatedAt;
 
-    @OneToMany(
-            mappedBy = "user",
-            fetch = FetchType.LAZY,
-            cascade = CascadeType.ALL,
-            orphanRemoval = true
-    )
-    @JsonManagedReference
-    private final List<Todo> todos = new ArrayList<>();
-
     @PrePersist
     protected void onCreate() {
         createdAt = OffsetDateTime.now(ZoneOffset.UTC);
