@@ -5,13 +5,11 @@ import com.saurabhgitdev.todo.user.dto.CreateUserRequestBody;
 import com.saurabhgitdev.todo.user.dto.CreateUserResponse;
 import com.saurabhgitdev.todo.user.dto.FindAllUserResponse;
 import com.saurabhgitdev.todo.user.dto.FindAllUserResponseUser;
-import org.apache.coyote.BadRequestException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.UUID;
 
 @Service
@@ -27,7 +25,7 @@ public class UserService {
     public CreateUserResponse createUser(CreateUserRequestBody reqBody) {
         log.info(reqBody.toString());
         User user = new User();
-        user.setName(reqBody.getName());
+        user.setName(reqBody.name());
 
         User res = userRepository.save(user);
 

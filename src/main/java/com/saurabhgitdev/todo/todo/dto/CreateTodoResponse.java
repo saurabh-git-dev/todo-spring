@@ -10,32 +10,6 @@ import java.time.OffsetDateTime;
 public record CreateTodoResponse(@NotNull Long id, @NotBlank String title,
                                  @Schema(nullable = true, requiredMode = Schema.RequiredMode.REQUIRED) @Null String description,
                                  @NotBlank OffsetDateTime createdTime, @NotBlank OffsetDateTime updatedTime) {
-
-    @Override
-    public OffsetDateTime createdTime() {
-        return createdTime;
-    }
-
-    @Override
-    public OffsetDateTime updatedTime() {
-        return updatedTime;
-    }
-
-    @Override
-    public String title() {
-        return title;
-    }
-
-    @Override
-    public Long id() {
-        return id;
-    }
-
-    @Override
-    public String description() {
-        return description;
-    }
-
     public CreateTodoResponse(Long id, String title, String description, OffsetDateTime createdTime, OffsetDateTime updatedTime) {
         this.id = id;
         this.title = title;
